@@ -96,8 +96,9 @@ def edit():
     update_story = [sID, storytitle, story, criteria, business, estimation, status]
     for item in table:
         if sID == item[0]:
+            index_of_the_updated_row = table.index(item)
             table.remove(item)
-            table.insert(int(ID)-1, update_story)
+            table.insert(index_of_the_updated_row, update_story)
     write_to_csv(table)
     return redirect ('/')
 
