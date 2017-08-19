@@ -57,7 +57,7 @@
     <input type = "number", min = "0.5", max = "40", step = "0.5", name='updateestimation', id ="updateestimation", value = '{{ edit_list[5] }}'>
     <br>
     <label for = "updatestatus">Status</label><br>
-    <select name = "options", id ="updatestatus">
+    <select name = "options", id ="updatestatus", value = '{{ edit_list[6] }}'>
         {% for option in options %}
             <option value = '{{ option }}'>{{ option }}</option>
         {% endfor %}
