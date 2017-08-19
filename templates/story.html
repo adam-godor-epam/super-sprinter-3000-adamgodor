@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Super Sprinter 3000 - Add New Story</title>
+    </head>
+    {% if not ID%}
+    <body>
+        <form action="/save-story" method="post">
+        <h1>User Story Manager - Create Story</h1>
+
+        <label for = "storytitle">Story Title</label><br>
+            <input type = "text", id = "storytitle", name = "storytitle", required>
+        <br>
+        <label for = "story"> User Story</label><br>
+        <textarea rows ="5", cols ="70", name = "story", id = "story", required></textarea>
+        <br>
+        <label for = "criteria">Acceptance Criteria</label><br>
+        <textarea rows ="5", cols ="70", name = 'criteria', id ="criteria", required></textarea>
+        <br>
+        <label for = "business">Business Value</label><br>
+        <input type = "number", value = "100", min = "100", max = "1500", step = "100", name='business', id = "business">
+        <br>
+        <label for = "estimation">Estiamtion</label><br>
+        <input type = "number", value = "0.5", min = "0.5", max = "40", step = "0.5", name='estimation', id ="estimation">
+        <br>
+        <label for = "status">Status</label><br>
+        <select name = "options", id ="status">
+            {% for option in options %}
+                <option value = '{{ option }}'>{{ option }}</option>
+            {% endfor %}
+        </select><br>
+        <br>
+
+        <input type = "submit", value = "Create">
+    </form>
+</body>
+
+{% else %}
+<body>
+    <form action="/edit-story" method="POST">
+    <h1>User Story Manager -  Edit story</h1>
+
+    <label for = "updatestorytitle">Story Title</label><br>
+        <input type = "text", id = "updatestorytitle", name = "updatestorytitle", required, value = '{{ edit_list[1] }}'>
+    <br>
+    <label for = "updatestory"> User Story</label><br>
+    <textarea rows ="5", cols ="70", name = "updatestory", id = "updatestory", required>{{ edit_list[2] }}</textarea>
+    <br>
+    <label for = "updatecriteria">Acceptance Criteria</label><br>
+    <textarea rows ="5", cols ="70", name = 'updatecriteria', id ="updatecriteria", required>{{ edit_list[3] }}</textarea>
+    <br>
+    <label for = "updatebusiness">Business Value</label><br>
+    <input type = "number", min = "100", max = "1500", step = "100", name='updatebusiness', id = "updatebusiness", value = '{{ edit_list[4] }}'>
+    <br>
+    <label for = "updateestimation">Estiamtion</label><br>
+    <input type = "number", min = "0.5", max = "40", step = "0.5", name='updateestimation', id ="updateestimation", value = '{{ edit_list[5] }}'>
+    <br>
+    <label for = "updatestatus">Status</label><br>
+    <select name = "options", id ="updatestatus">
+        {% for option in options %}
+            <option value = '{{ option }}'>{{ option }}</option>
+        {% endfor %}
+    </select><br>
+    <br>
+
+    <Button name = 'edit', type = "submit", value = '{{ edit_list[0] }}'> Update </button>
+</form>
+</body>
+{% endif %}

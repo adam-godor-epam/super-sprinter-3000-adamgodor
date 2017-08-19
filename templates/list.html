@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Super Sprinter 3000</title>
+        <style>
+		td {
+			border: 1px solid #999;
+			padding: 0.1em 1em;
+		}
+	</style>
+    </head>
+        <body>
+            <h1>Super Sprinter 3000</h1>
+            <a href="/story">Add a new User Story</a><br>
+            <table>
+                <tr>
+                {%for header in header_list %}
+                    <td>{{header}}</td>
+                {% endfor %}
+
+                <tr>
+                {% for tab in table %}
+                    <td>{{tab[0]}}</td>
+                    <td>{{tab[1]}}</td>
+                    <td>{{tab[2]}}</td>
+                    <td>{{tab[3]}}</td>
+                    <td>{{tab[4]}}</td>
+                    <td>{{tab[5]}}</td>
+                    <td>{{tab[6]}}</td>
+
+                <td><form action = 'delete', method ='POST'>
+                <input type = 'image' src = '/static/trashcan.png', width = "15" length = "15" name = "delete", id = "deletestory", value = '{{ tab[0] }}'>
+                </form></td>
+                <td><form action = 'edit/{{ tab[0] }}', method ='POST'>
+                <input type = 'image' src = '/static/pen.png', width = "15" length = "15" name = "edit", id = "edit", value = '{{ tab[0] }}'>
+                </form></td>
+                </tr>
+{% endfor %}
+
+            </table>
+
+    </body>
+</html>
