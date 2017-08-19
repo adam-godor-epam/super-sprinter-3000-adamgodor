@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% if not ID%}
 <html>
     <head>
         <meta charset="utf-8">
         <title>Super Sprinter 3000 - Add New Story</title>
     </head>
-    {% if not ID%}
+
     <body>
         <form action="/save-story" method="post">
         <h1>User Story Manager - Create Story</h1>
@@ -37,6 +38,11 @@
 </body>
 
 {% else %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Super Sprinter 3000 - Edit Story</title>
+    </head>
 <body>
     <form action="/edit-story" method="POST">
     <h1>User Story Manager -  Edit story</h1>
@@ -57,10 +63,14 @@
     <input type = "number", min = "0.5", max = "40", step = "0.5", name='updateestimation', id ="updateestimation", value = '{{ edit_list[5] }}'>
     <br>
     <label for = "updatestatus">Status</label><br>
-    <select name = "options", id ="updatestatus", value = '{{ edit_list[6] }}'>
-        {% for option in options %}
-            <option value = '{{ option }}'>{{ option }}</option>
-        {% endfor %}
+    <select name = "options", id ="updatestatus", required>
+            <option value = "", selected, disabled, hidden=>Please choose</option>
+            <option value = 'Planning'>Planning</option>
+            <option value = 'TODO'>TODO</option>
+            <option value = 'In Progress'>In Progress</option>
+            <option value = 'Review'>Reviewg</option>
+            <option value = 'Done'>Done</option>
+
     </select><br>
     <br>
 
